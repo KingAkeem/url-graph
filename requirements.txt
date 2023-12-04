@@ -1,0 +1,4 @@
+neo4j
+httpx
+bs4
+validators
