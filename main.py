@@ -1,6 +1,6 @@
 import httpx
 import validators
-import time
+import yaml
 
 from bs4 import BeautifulSoup
 from neo4j import GraphDatabase
@@ -59,7 +59,13 @@ def crawl(url: str, depth: int, graph: URLGraph) -> None:
 
 
 if __name__ == "__main__":
-    graph = URLGraph("bolt://localhost:7687", "neo4j", "Machine55!5")
+    with open("config.yml", "r") as stream:
+        config_data = yaml.safe_load(stream)
+
+    uri = config_data["neo4j"]["uri"]
+    username = config_data["neo4j"]["username"]
+    password = config_data["neo4j"]["password"]
+    graph = URLGraph(uri, username, password)
     graph.add_node({"url": "https://www.google.com", "parent": None})
     crawl("https://www.google.com", 3, graph)
     graph.close()
