@@ -20,6 +20,7 @@ In the world of web data, understanding relationships between URLs is crucial. T
 Before you begin, ensure you have the following prerequisites installed:
 
 - Neo4j Database [Download Neo4j](https://neo4j.com/download/)
+- Python [Download Python](https://www.python.org/downloads/)
 
 ### Installation
 
