@@ -44,7 +44,7 @@ neo4j:
   password: your-password
 ```
 
-### Running App
+### Running the application
 3. Start the Neo4j database, this will be based on the OS that you're using. Check Neo4j instructions for further explanation.
 
 4. Execute the application
