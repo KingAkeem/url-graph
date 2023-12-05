@@ -59,7 +59,7 @@ Browser URL: http://localhost:7474/browser/
 
 ```cypher
 // Example Cypher Query to find relationships for a specific URL
-MATCH (url:URL {value: 'https://example.com'})
--[relationship]-()
+MATCH (url:Node {url: 'https://example.com'})
+-[:parent]-()
 RETURN url, relationship;
 ```
