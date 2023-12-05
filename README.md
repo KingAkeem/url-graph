@@ -49,7 +49,7 @@ neo4j:
 
 4. Execute the application
 ```bash
-python main.py
+python main.py -u https://www.example.com -d 3 # -u/--url to specify URI and -d/--depth to specify depth of graph
 ```
 
 Will dockerize project at some point.
