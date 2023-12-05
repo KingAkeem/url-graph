@@ -1,6 +1,7 @@
 import httpx
 import validators
 import yaml
+import argparse
 
 from bs4 import BeautifulSoup
 from neo4j import GraphDatabase
@@ -59,13 +60,34 @@ def crawl(url: str, depth: int, graph: URLGraph) -> None:
 
 
 if __name__ == "__main__":
+    # setup args
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-u",
+        "--url",
+        type=str,
+        required=True,
+        help="Specify a URL to create a graph of.",
+    )
+    parser.add_argument(
+        "-d",
+        "--depth",
+        type=int,
+        default=1,
+        help="Specify the depth of the graph.",
+    )
+    args = parser.parse_args()
+
+    # read config
     with open("config.yml", "r") as stream:
         config_data = yaml.safe_load(stream)
-
     uri = config_data["neo4j"]["uri"]
     username = config_data["neo4j"]["username"]
     password = config_data["neo4j"]["password"]
+
+    # construct graph
     graph = URLGraph(uri, username, password)
-    graph.add_node({"url": "https://www.google.com", "parent": None})
-    crawl("https://www.google.com", 3, graph)
+    print(args.url)
+    graph.add_node({"url": args.url, "parent": None})
+    crawl(args.url, args.depth, graph)
     graph.close()
