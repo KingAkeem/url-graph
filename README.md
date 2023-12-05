@@ -63,3 +63,11 @@ MATCH (n:Node {url: 'https://example.com'})
 -[relationship:parent]-()
 RETURN n, relationship;
 ```
+
+## Examples
+
+### With a depth of 1
+![graph](https://github.com/KingAkeem/url-graph/assets/13573860/402022ff-4305-4808-b0e5-604bd5b6146f)
+
+### With a depth of 3
+![graph (1)](https://github.com/KingAkeem/url-graph/assets/13573860/f2114120-4d90-4049-b1be-5b3b4be44917)
