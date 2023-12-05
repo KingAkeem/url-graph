@@ -20,6 +20,7 @@ In the world of web data, understanding relationships between URLs is crucial. T
 Before you begin, ensure you have the following prerequisites installed:
 
 - Neo4j Database [Download Neo4j](https://neo4j.com/download/)
+- Python [Download Python](https://www.python.org/downloads/)
 
 ### Installation
 
@@ -43,8 +44,10 @@ neo4j:
   password: your-password
 ```
 
-### Running App
-3. Start the Neo4j database.
+### Running the application
+3. Start the Neo4j database, this will be based on the OS that you're using. Check Neo4j instructions for further explanation.
+
+4. Execute the application
 ```bash
 python main.py
 ```
@@ -56,7 +59,7 @@ Browser URL: http://localhost:7474/browser/
 
 ```cypher
 // Example Cypher Query to find relationships for a specific URL
-MATCH (url:URL {value: 'https://example.com'})
--[relationship]-()
-RETURN url, relationship;
+MATCH (n:Node {url: 'https://example.com'})
+-[relationship:parent]-()
+RETURN n, relationship;
 ```
